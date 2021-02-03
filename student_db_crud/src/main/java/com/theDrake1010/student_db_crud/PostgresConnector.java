@@ -20,14 +20,18 @@ public class PostgresConnector {
     public Connection connectToDB(){
         Connection conn = null;
         try {
+            Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection(db_url, user, password);
             System.out.println((conn != null) ? "Connection Successfull!" : "Connection Failed!");
-        } catch (SQLException e) {
+        } 
+        catch(SQLException sqle) {
+            sqle.printStackTrace();
+        }
+        catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return conn;
     }
 
-    public 
 }
