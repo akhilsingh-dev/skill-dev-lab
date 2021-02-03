@@ -9,7 +9,7 @@ public class PostgresConnector {
     private final String db_name = "test";
     private final String db_url = "jdbc:postgresql://localhost/" + db_name;
     private final String user = "postgres";
-    private final String password = "akhil@2017";
+    private final String password = "<ENTER PASSWORD>";
 
     // private static final String createTableSQL = "CREATE TABLE IF NOT EXISTS students " +
     //     "(ID INT PRIMARY KEY ," +
