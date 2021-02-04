@@ -6,16 +6,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class PostgresConnector {
-    private final String db_name = "test";
-    private final String db_url = "jdbc:postgresql://localhost/" + db_name;
-    private final String user = "postgres";
-    private final String password = "<REDACTED>";
+import java.io.File;
+import java.util.Scanner;
 
-    public Connection connectToDB(){
+public class PostgresConnector {
+    
+    public Connection connectToDB(){    
         Connection conn = null;
         try {
+            File myObj = new File("./student_db_crud/db_cred.txt");
+            Scanner myReader = new Scanner(myObj);
+            final String db_url = "jdbc:postgresql://localhost/" + myReader.nextLine().toString();
+            final String user = myReader.nextLine().toString();
+            final String password = myReader.nextLine().toString();
+            myReader.close();
+
             Class.forName("org.postgresql.Driver");
+            
             conn = DriverManager.getConnection(db_url, user, password);
             System.out.println((conn != null) ? "Connection Successfull!" : "Connection Failed!");
         } 
